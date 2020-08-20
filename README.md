@@ -1,6 +1,32 @@
 # vodafone-facebook-reply-bot
 
-## minta
+## példák
+
+`panaszkezeles(PANASZ.NINCS_NET, 'Ottó', 'Dömsöd', 'Jocó', true)`
+
+Válasz #1:
+```
+    Szia Ottó!
+    elnézést a kellemetlenségért.
+    Dömsöd van tudomásunk központi fennakadásról, azonban mivel egyéni előfizetésedre nem látunk rá, így csak általánosságban tudunk tájékoztatni.
+    
+    szeretnénk utánanézni, hogy mi lehet a gond, ezért arra kérünk, jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , hogy segíthessünk !
+    további türelmet kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás és várjuk megkeresésed, hogy minél előbb segítségedre lehessünk és visszaállíthassuk a minőségi szolgáltatást!
+    Üdv: *Jocó"
+```
+
+Válasz #2:
+```
+    Szia Ottó!
+    elnézést kérünk a kellemetlenségekért.
+    Dömsöd bizonyos részein központi fennakadás tapasztalható, melyről már tudomásunk van, és dolgozunk azon, hogy helyreálljon a szolgáltatás.
+    itt, Facebook oldalunkon általános kérdésekben szívesen segítünk, de egyéni előfizetéseddel kapcsolatban ügyfélszolgálatunk lehet segítségedre.
+    ha továbbra is fennakadást érzékelsz a szolgáltatásokban, kérjük jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , a mielőbbi megoldás érdekében vagy írásban, a https://bit.ly/2UXAJJo oldalunkon keresztül érdeklődni!
+    együttműködésed köszönjük és az okozott kellemetlenség miatt elnézést kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás és várjuk megkeresésed, hogy minél előbb segítségedre lehessünk és visszaállíthassuk a minőségi szolgáltatást!
+    Üdv: *Jocó
+```
+
+## minta, ami alapján a kód készült
 
 Szia Gábor! Teszteltük alkalmazásunkat és megfelelően működik. Az általad leírtak alapján, egyéni előfizetésedhez tartozó okok miatt tapasztalható a jelenség. Javasoljuk a megoldás érdekében, hogy egyeztess 1270-es telefonszámon elérhető ügyfélszolgálatunkkal, illetve a https://bit.ly/34kOWGL hivatkozáson online is megteheted bejelentésed. Együttműködésed köszönjük! Üdv: *Beus
 

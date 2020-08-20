@@ -1,7 +1,25 @@
+const random = array => {
+  return array[Math.floor(Math.random() * array.length)]
+}
+
+const appendIfNotEmpty = (phrase, addition) => {
+  if (phrase !== '') {
+    return phrase + addition
+  } else {
+    return ''
+  }
+}
+
+const isNotEmpty = x => {
+  return x.length !== 0
+}
+
+// ------------------------------
+
 const PANASZ = {
-  NINCS_NET = 0x01,
-  NINCS_TV = 0x02,
-  NEM_TUDTA_HIVNI_AZ_UGYFELSZOLGALATOT = 0x04
+  NINCS_NET: 0x01,
+  NINCS_TV: 0x02,
+  NEM_TUDTA_HIVNI_AZ_UGYFELSZOLGALATOT: 0x04
 }
 
 const KOSZONJUK = [
@@ -38,22 +56,22 @@ const URL = [
 const ISMERETLEN_HELYSZIN = [
   'igyekszünk mielőbb javítani az ilyen váratlan szolgáltatás kieséseket, de pontos időpontot sajnos nem tudunk meghatározni',
   'a javítás időpontjáról ügyfélszolgálatunk egyelőre nem rendelkezik információval, türelmedet kérnénk ennek megtörténtéig',
-  'felelős munkatársaink értesültek a szolgáltatás nem megfelelő működéséről, és a javítás jelenleg is folyamatban van.'
+  'felelős munkatársaink értesültek a szolgáltatás nem megfelelő működéséről, és a javítás jelenleg is folyamatban van'
 ]
 
 const ISMERT_HELYSZIN_JAVITVA = [
-  '%%HOL%% bizonyos részein fennakadás volt tapasztalható a szolgáltatásban, mely nyilvántartásunk szerint %%MIKOR%% javítva lett.',
+  '%%HOL%% bizonyos részein fennakadás volt tapasztalható a szolgáltatásban, mely nyilvántartásunk szerint %%MIKOR%% javítva lett',
 ]
 
 const ISMERT_HELYSZIN_FOLYAMATBAN = [
-  'Jelenleg központi fennakadás tapasztalható a %%HOL%%. Munkatársaink már dolgoznak rajta, hogy minél hamarabb visszaállíthassák a szolgáltatást.',
-  '%%HOL%% van tudomásunk központi fennakadásról, azonban mivel egyéni előfizetésedre nem látunk rá, így csak általánosságban tudunk tájékoztatni.',
-  '%%HOL%% bizonyos részein központi fennakadás tapasztalható, melyről már tudomásunk van, és dolgozunk azon, hogy helyreálljon a szolgáltatás.'
+  'Jelenleg központi fennakadás tapasztalható a %%HOL%%. Munkatársaink már dolgoznak rajta, hogy minél hamarabb visszaállíthassák a szolgáltatást',
+  '%%HOL%% van tudomásunk központi fennakadásról, azonban mivel egyéni előfizetésedre nem látunk rá, így csak általánosságban tudunk tájékoztatni',
+  '%%HOL%% bizonyos részein központi fennakadás tapasztalható, melyről már tudomásunk van, és dolgozunk azon, hogy helyreálljon a szolgáltatás'
 ]
 
 const CANT_DO_SHIT_ON_FACEBOOK = [
   '',
-  'itt, Facebook oldalunkon általános kérdésekben szívesen segítünk, de egyéni előfizetéseddel kapcsolatban ügyfélszolgálatunk lehet segítségedre.',
+  'itt, Facebook oldalunkon általános kérdésekben szívesen segítünk, de egyéni előfizetéseddel kapcsolatban ügyfélszolgálatunk lehet segítségedre',
   'itt, a Facebook oldalunkon csak általános kérdésekben lehetünk segítségedre, egyedi előfizetésedet érintő kérdésekben kérjük, keress minket telefonos ügyfélszolgálatunkon, a 1270-es számon, vagy további elérhetőségeink egyikén: ' + random(URL)
 ]
 
@@ -124,28 +142,10 @@ const BOCSI_GENERIC = [
 
 // ------------------------------
 
-const random = array => {
-  return array[Math.floor(Math.random() * array.length)]
-}
-
-const appendIfNotEmpty = (phrase, addition) => {
-  if (phrase !== '') {
-    return phrase + addition
-  } else {
-    return ''
-  }
-}
-
-const isNotEmpty = x => {
-  return x.length !== 0
-}
-
-// ------------------------------
-
-const reply = (panasz, panaszHelye, panaszosNeve, botNeve, tudunkAHibarol, hibaJavitva = null) => {
+const panaszkezeles = (panasz, panaszosNeve, panaszHelye, botNeve, tudunkAHibarol, hibaJavitva = null) => {
   const koszonettel = appendIfNotEmpty([random(KOSZONJUK), random(KERUNK), random(SZOLGALTATAS), random(HIVJ_MINKET_MERT)].filter(isNotEmpty).join(' és '), '!')
 
-  const facebookonNemTudunkSegiteni = random(CANT_DO_SHIT_ON_FACEBOOK)
+  const facebookonNemTudunkSegiteni = appendIfNotEmpty(random(CANT_DO_SHIT_ON_FACEBOOK), '.')
 
   let bocsanat = random(BOCSI_GENERIC)
   let panaszValasz = ''
@@ -171,7 +171,7 @@ const reply = (panasz, panaszHelye, panaszosNeve, botNeve, tudunkAHibarol, hibaJ
     Szia ${panaszosNeve}!
     ${bocsanat}.
     ${panaszValasz}.
-    ${facebookonNemTudunkSegiteni}.
+    ${facebookonNemTudunkSegiteni}
     ${kontaktAjanlo}
     ${koszonettel}
     Üdv: *${botNeve}
