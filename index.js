@@ -19,8 +19,11 @@ const isNotEmpty = x => {
 const PANASZ = {
   NINCS_NET: 0x01,
   NINCS_TV: 0x02,
-  NEM_TUDTA_HIVNI_AZ_UGYFELSZOLGALATOT: 0x04
+  NEM_VESZI_FEL_AZ_UGYFELSZOLGALAT_A_TELEFONT: 0x04
 }
+
+const ISMERT_HIBA = true
+const ISMERETLEN_HIBA = false
 
 const KOSZONJUK = [
   '',
@@ -152,14 +155,14 @@ const panaszkezeles = (panasz, panaszosNeve, panaszHelye, botNeve, tudunkAHibaro
   let kontaktAjanlo = [random(KONTAKT_JAVASLAT_PREFIX), random(KONTAKT_PRIMARY), random(KONTAKT_PRIMARY_EZERT), random(KONTAKT_SECONDARY)].join(' ') + '!'
 
   switch (panasz) {
-    case PANASZ.NEM_TUDTA_HIVNI_AZ_UGYFELSZOLGALATOT:
+    case PANASZ.NEM_VESZI_FEL_AZ_UGYFELSZOLGALAT_A_TELEFONT:
       bocsanat = random(BOCSI_TUL_SOKAIG_VART)
       panaszValasz = random(AKKOR_IS_KONTAKT_HA_AZ_TUL_VAN_TERHELVE) + ', ' + random(DE_MI_MEGIS_KIRALYOK_VAGYUNK) + '.'
       kontaktAjanlo = ''
       break
     case PANASZ.NINCS_NET:
     case PANASZ.NINCS_TV:
-      if (tudunkAHibarol) {
+      if (tudunkAHibarol === ISMERT_HIBA) {
         panaszValasz = random(hibaJavitva === null ? ISMERT_HELYSZIN_FOLYAMATBAN : ISMERT_HELYSZIN_JAVITVA).replace('%%HOL%%', panaszHelye).replace('%%MIKOR%%', hibaJavitva)
       } else {
         panaszValasz = random(ISMERETLEN_HELYSZIN)
@@ -168,12 +171,12 @@ const panaszkezeles = (panasz, panaszosNeve, panaszHelye, botNeve, tudunkAHibaro
   }
 
   return `
-    Szia ${panaszosNeve}!
-    ${bocsanat}.
-    ${panaszValasz}.
-    ${facebookonNemTudunkSegiteni}
-    ${kontaktAjanlo}
-    ${koszonettel}
-    Üdv: *${botNeve}
+Szia ${panaszosNeve}!
+${bocsanat}.
+${panaszValasz}.
+${facebookonNemTudunkSegiteni}
+${kontaktAjanlo}
+${koszonettel}
+Üdv: *${botNeve}
   `
 }

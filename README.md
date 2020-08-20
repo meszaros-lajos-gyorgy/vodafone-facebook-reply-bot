@@ -1,30 +1,58 @@
 # vodafone-facebook-reply-bot
 
+Bújj be te is egy vodafone facebook ügyfélszolgálati asszisztens bőrébe és oldd meg az ügyfelek problémáit!
+
+## hogyan használd
+
+másold be konzolba az index.js tartalmát, majd hívd meg paraméterekkel a `panaszkezeles` függvényt
+
+### paraméterek
+
+`panasz` - 3 értéket vehet fel jelenleg: `PANASZ.NINCS_NET`, `PANASZ.NINCS_TV` és `PANASZ.NEM_VESZI_FEL_AZ_UGYFELSZOLGALAT_A_TELEFONT`
+
+`panaszosNeve` - szöveg, macskakörmök közé írd be a keresztnevét annak, aki a hibát jelenti
+
+`panaszHelye` - szöveg, macskakörmök közé írj be egy várost, vagy kerületet, mindenképpen nagyobb egység legyen, ne utca és házszám
+
+`botNeve` - szöveg, macskakörmök közé írd be a nevedet, az ő nevében fogsz választ írni
+
+`tudunkAHibarol` - 2 értéke lehet, vagy ISMERT_HIBA, vagy ISMERETLEN_HIBA
+
+`hibaJavitva` - opcionális paraméter. ha kitöltöd, akkor szöveget írj bele, macskakörmök közé kerüljön valamilyen dátum, vagy időpont
+
 ## példák
 
-`panaszkezeles(PANASZ.NINCS_NET, 'Ottó', 'Dömsöd', 'Jocó', true)`
+`panaszkezeles(PANASZ.NINCS_NET, "Ottó", "Dömsöd", "Jocó", ISMERT_HIBA)`
 
-Válasz #1:
+Válasz:
 ```
-    Szia Ottó!
-    elnézést a kellemetlenségért.
-    Dömsöd van tudomásunk központi fennakadásról, azonban mivel egyéni előfizetésedre nem látunk rá, így csak általánosságban tudunk tájékoztatni.
-    
-    szeretnénk utánanézni, hogy mi lehet a gond, ezért arra kérünk, jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , hogy segíthessünk !
-    további türelmet kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás és várjuk megkeresésed, hogy minél előbb segítségedre lehessünk és visszaállíthassuk a minőségi szolgáltatást!
-    Üdv: *Jocó"
+Szia Ottó!
+elnézést kérünk a kellemetlenségekért.
+Dömsöd bizonyos részein központi fennakadás tapasztalható, melyről már tudomásunk van, és dolgozunk azon, hogy helyreálljon a szolgáltatás.
+itt, Facebook oldalunkon általános kérdésekben szívesen segítünk, de egyéni előfizetéseddel kapcsolatban ügyfélszolgálatunk lehet segítségedre.
+ha továbbra is fennakadást érzékelsz a szolgáltatásokban, kérjük jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , a mielőbbi megoldás érdekében vagy írásban, a https://bit.ly/2UXAJJo oldalunkon keresztül érdeklődni!
+együttműködésed köszönjük és az okozott kellemetlenség miatt elnézést kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás és várjuk megkeresésed, hogy minél előbb segítségedre lehessünk és visszaállíthassuk a minőségi szolgáltatást!
+Üdv: *Jocó
 ```
 
-Válasz #2:
+`panaszkezeles(PANASZ.NINCS_TV, "Csilla", "Budapest 2. kerület", "Antal", ISMERETLEN_HIBA)`
+
+Válasz:
 ```
-    Szia Ottó!
-    elnézést kérünk a kellemetlenségekért.
-    Dömsöd bizonyos részein központi fennakadás tapasztalható, melyről már tudomásunk van, és dolgozunk azon, hogy helyreálljon a szolgáltatás.
-    itt, Facebook oldalunkon általános kérdésekben szívesen segítünk, de egyéni előfizetéseddel kapcsolatban ügyfélszolgálatunk lehet segítségedre.
-    ha továbbra is fennakadást érzékelsz a szolgáltatásokban, kérjük jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , a mielőbbi megoldás érdekében vagy írásban, a https://bit.ly/2UXAJJo oldalunkon keresztül érdeklődni!
-    együttműködésed köszönjük és az okozott kellemetlenség miatt elnézést kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás és várjuk megkeresésed, hogy minél előbb segítségedre lehessünk és visszaállíthassuk a minőségi szolgáltatást!
-    Üdv: *Jocó
+Szia Csilla!
+elnézést kérünk a tapasztaltakért.
+igyekszünk mielőbb javítani az ilyen váratlan szolgáltatás kieséseket, de pontos időpontot sajnos nem tudunk meghatározni.
+
+amennyiben továbbra is ezt tapasztalod, érdemes jelezd az általad tapasztaltakat a 1270-es telefonszámon ügyfélszolgálatunkon , hogy segíthessünk vagy írásban, a https://bit.ly/34kOWGL oldalunkon keresztül érdeklődni!
+további türelmet kérünk és bízunk benne, hogy már helyreállt Nálad a szolgáltatás!
+Üdv: *Antal
 ```
+
+## disclaimer
+
+Minden igyekezetem ellenére nem garantált a nyelvtani helyesség.
+
+Kiegészítéseket szívesen látok pull request-ek formájában.
 
 ## minta, ami alapján a kód készült
 
